@@ -4,6 +4,11 @@ import pandas as pd
 st.set_page_config(page_title="紙タオル 使用量比較", layout="wide")
 st.title("📋 紙タオル 使用量比較")
 
+st.markdown("""
+> ※ 実使用に基づく5日間以上のデータから平均を算出しています。  
+> なお、すべての製品に対して同一条件で比較を行っており、信頼性向上のため今後も継続的にデータ取得を進めていきます。
+""")
+
 # 固定ファイルの読み込み
 df = pd.read_excel("使用量調査.xlsx", engine="openpyxl")
 df.columns = df.columns.str.strip()
@@ -69,3 +74,4 @@ st.dataframe(
 
 csv = filtered_df.to_csv(index=False).encode("utf-8-sig")
 st.download_button("⬇️ CSVをダウンロード", data=csv, file_name="略称別_使用量一覧.csv", mime="text/csv")
+
