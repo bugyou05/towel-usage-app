@@ -7,7 +7,7 @@ st.title("📋 紙タオル 使用量比較")
 uploaded_file = st.file_uploader("Excelファイルをアップロードしてください", type="xlsx")
 
 if uploaded_file:
-    df = pd.read_excel(uploaded_file)
+    df = pd.read_excel(uploaded_file, engine="openpyxl")
     df.columns = df.columns.str.strip()
 
     if "商品コード" not in df.columns:
